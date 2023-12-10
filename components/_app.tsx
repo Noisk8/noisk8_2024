@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <NextUIProvider>
       <NextThemesProvider attribute="class" defaultTheme="dark">
-        <Component {...pageProps} />
+        
       </NextThemesProvider>
     </NextUIProvider>
   )
