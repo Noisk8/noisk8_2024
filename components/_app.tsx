@@ -1,11 +1,14 @@
 // pages/_app.js
-import {NextUIProvider} from '@nextui-org/react'
-import type { AppProps } from 'next/app'
+import {NextUIProvider} from "@nextui-org/react";
+import {ThemeProvider as NextThemesProvider} from "next-themes";
+import { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <NextUIProvider>
-      <Component {...pageProps} />
+      <NextThemesProvider attribute="class" defaultTheme="dark">
+        <Component {...pageProps} />
+      </NextThemesProvider>
     </NextUIProvider>
   )
 }
