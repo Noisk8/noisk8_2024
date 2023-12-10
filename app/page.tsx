@@ -1,3 +1,4 @@
+'use client'
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/code"
@@ -6,8 +7,33 @@ import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 import {Button} from '@nextui-org/button'; 
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 export default function Home() {
+
+	const [theme, setTheme] = useState(() => {
+		if (window.matchMedia("(prefers-color-scheme: dark)").matches){
+		  return "dark";
+		}
+		  return "light";
+		});
+
+		useEffect(() => {
+			const htmlElement = document.querySelector('html');
+			if (htmlElement) {
+				if (theme === "dark") {
+					htmlElement.classList.add('dark');
+				} else {
+					htmlElement.classList.remove('dark');
+				}
+			}
+		}, [theme]);
+		
+		  const handleChangeTheme = () => {
+			setTheme(prevTheme => prevTheme == "light" ? "dark" : "light")
+		  }
+		
 	return (
 		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
 			<div className="inline-block max-w-lg text-center justify-center">
