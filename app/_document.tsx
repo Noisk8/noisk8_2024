@@ -6,8 +6,9 @@ class MyDocument extends Document {
       <Html>
         <Head>
           {/* Otros metadatos */}
-          <meta name="viewport" content="initial-scale=1, width=device-width, theme-color=#yourColorHere" />
-          {/* Asegúrate de eliminar la etiqueta meta theme-color si existe */}
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+          <meta name="theme-color" content="#333333" media="(prefers-color-scheme: dark)" />
+          {/* Asegúrate de eliminar cualquier etiqueta meta theme-color duplicada */}
         </Head>
         <body>
           <Main />
