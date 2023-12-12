@@ -9,15 +9,17 @@ import { GithubIcon } from "@/components/icons";
 import {Button} from '@nextui-org/button'; 
 import { useEffect } from 'react'
 import { useState } from 'react'
+import {Image} from "@nextui-org/react";
+
 
 export default function Home() {
 
-	const [theme, setTheme] = useState(() => {
-		if (window.matchMedia("(prefers-color-scheme: dark)").matches){
-		  return "dark";
-		}
-		  return "light";
-		});
+	const [theme, setTheme] = useState('light'); // valor predeterminado
+
+useEffect(() => {
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  setTheme(mediaQuery.matches ? 'dark' : 'light');
+}, []);
 
 		useEffect(() => {
 			const htmlElement = document.querySelector('html');
@@ -30,11 +32,11 @@ export default function Home() {
 			}
 		}, [theme]);
 		
-		  const handleChangeTheme = () => {
-			setTheme(prevTheme => prevTheme == "light" ? "dark" : "light")
-		  }
+		  
 		
 	return (
+
+	
 		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
 			<div className="inline-block max-w-lg text-center justify-center">
 				<h1 className={title()}>Ni </h1>
@@ -49,7 +51,7 @@ export default function Home() {
 			</div>
 
 			<div>
-      <Button>Click me</Button>
+
     </div>
 
 
@@ -79,5 +81,6 @@ export default function Home() {
 				</Snippet>
 			</div>
 		</section>
+
 	);
 }
